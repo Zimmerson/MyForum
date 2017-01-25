@@ -19,7 +19,7 @@ class Database
      */
     private function __construct($dbHost, $dbName, $dbUser, $dbPass)
     {
-        $this->pdo = new \PDO("mysql:host=$dbUser;dbname=$dbName", $dbUser, $dbPass);
+        $this->pdo = new \PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
     }
 
     public static function getInstance()
