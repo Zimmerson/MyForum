@@ -2,3 +2,9 @@
 
 # PHPStorm IDE files.
 .idea/
+
+# Don't commit sensative credentials.
+config/.env
+
+# Vendor libraries via Composer.
+vendor
