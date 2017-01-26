@@ -22,6 +22,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST')
 }
 else
 {
+    //the form has been posted, so save it
     $sql = "INSERT INTO categories
               (cat_name, cat_description)
             VALUES
@@ -33,17 +34,12 @@ else
         'description' => $_POST['cat_description']
     ]);
 
-
-    //the form has been posted, so save it
-    $sql = "INSERT INTO categories 
-            (cat_name, cat_description)
-       VALUES('' . mysql_real_escape_string($_POST['cat_name']) . ì',
-             '' . mysql_real_escape_string($_POST['cat_description']) . ì')";
-    $result = mysql_query($sql);
-    if(!$result)
+    if(!$success)
     {
         //something went wrong, display the error
-        echo 'Error' . mysql_error();
+        echo 'Something went wrong while signing in. Please try again later.';
+        //Debug
+        echo $stmt->errorInfo()[2];
     }
     else
     {
