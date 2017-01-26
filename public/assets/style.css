@@ -1,6 +1,7 @@
 body {
     background-color: #4E4E4E;
     text-align: center;         /* make sure IE centers the page too */
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 #wrapper {
@@ -12,7 +13,6 @@ body {
     background-color: #fff;
     border: 1px solid #000;
     float: left;
-    font-family: Arial;
     padding: 20px 30px;
     text-align: left;
     width: 100%;                /* fill up the entire div */
