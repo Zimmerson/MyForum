@@ -23,7 +23,7 @@ else
                 FROM
                     categories";
 
-        $stmt = Database::getInstance()->getPDO()->prepare($sql);
+        $stmt = Database::pdo()->prepare($sql);
 
         if(!success)
         {
@@ -88,13 +88,13 @@ else
                                " . $_SESSION['user_id'] . "
                                )";
 
-            $stmt = Database::getInstance()->getPDO()->prepare($sql);
+            $stmt = Database::pdo()->prepare($sql);
             if(!$success)
             {
                 //something went wrong, display the error
                 echo 'An error occured while inserting your data. Please try again later.' . mysql_error();
                 $sql = "ROLLBACK;";
-                $stmt = Database::getInstance()->getPDO()->prepare($sql);
+                $stmt = Database::pdo()->prepare($sql);
             }
             else
             {
@@ -113,19 +113,19 @@ else
                                   " . $topicid . ",
                                   " . $_SESSION['user_id'] . "
                             )";
-                $stmt = Database::getInstance()->getPDO()->prepare($sql);
+                $stmt = Database::pdo()->prepare($sql);
 
                 if(!succeed)
                 {
                     //something went wrong, display the error
                     echo 'An error occured while inserting your post. Please try again later.' . mysql_error();
                     $sql = "ROLLBACK;";
-                    $stmt = Database::getInstance()->getPDO()->prepare($sql);
+                    $stmt = Database::pdo()->prepare($sql);
                 }
                 else
                 {
                     $sql = "COMMIT;";
-                    $stmt = Database::getInstance()->getPDO()->prepare($sql);
+                    $stmt = Database::pdo()->prepare($sql);
 
                     //after a lot of work, the query succeeded!
                     echo 'You have successfully created <a href="topic.php?id='. $topicid . '">your new topic</a>.';

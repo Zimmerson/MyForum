@@ -75,7 +75,7 @@ else
                 VALUES
                   (:user, :pass, :email, NOW(), :level);";
                     
-        $stmt = Database::getInstance()->getPDO()->prepare($sql);
+        $stmt = Database::pdo()->prepare($sql);
         $success = $stmt->execute([
             'user' => $_POST['user_name'],
             'pass' => sha1($_POST['user_pass']),

@@ -38,6 +38,19 @@ class Database
         return self::$instance;
     }
 
+    /**
+     * Get the PDO instance.
+     *
+     * This is a shorthand function for:
+     * Database::getInstance()->getPDO()
+     *
+     * @return PDO
+     */
+    public static function pdo()
+    {
+        return self::getInstance()->getPDO();
+    }
+
     public function getPDO()
     {
         return $this->pdo;

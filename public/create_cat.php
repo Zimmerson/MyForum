@@ -28,7 +28,7 @@ else
             VALUES
               (:name, :description);";
 
-    $stmt = Database::getInstance()->getPDO()->prepare($sql);
+    $stmt = Database::pdo()->prepare($sql);
     $success = $stmt->execute([
         'name' => $_POST['cat_name'],
         'description' => $_POST['cat_description']

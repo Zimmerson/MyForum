@@ -56,7 +56,7 @@ if (isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true) {
                         user_pass = sha1(:pass) 
             ";
 
-            $stmt = Database::getInstance()->getPDO()->prepare($sql);
+            $stmt = Database::pdo()->prepare($sql);
             $success = $stmt->execute([
                 'user' => $_POST["user_name"],
                 'pass' => $_POST["user_pass"]

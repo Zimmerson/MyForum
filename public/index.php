@@ -11,9 +11,8 @@ $sql = "SELECT
         FROM
             categories";
 
-$stmt = Database::getInstance()->getPDO()->prepare($sql);
-
-$success = $stmt -> execute();
+$stmt = Database::pdo()->prepare($sql);
+$success = $stmt->execute();
 
 if(!$success)
 {
@@ -49,4 +48,3 @@ else
 }
 
 include 'footer.php';
-?>
