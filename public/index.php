@@ -21,7 +21,7 @@ if(!$success)
 }
 else
 {
-    if($stmt ->rowCount() == 0)
+    if($stmt->rowCount() == 0)
     {
         echo 'No categories defined yet.';
     }
