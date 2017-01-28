@@ -103,7 +103,10 @@ else
                 $topicid = mysql_insert_id();
 
                 $sql = "INSERT INTO
-                            posts(post_content, post_date, post_topic, post_by)
+                            posts(post_content,
+                                  post_date,
+                                  post_topic,
+                                  post_by)
                         VALUES
                             ('" . mysql_real_escape_string($_POST['post_content']) . "',
                                   NOW(),
