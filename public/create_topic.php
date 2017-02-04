@@ -9,7 +9,6 @@ if (!isset($_SESSION['signed_in']) || $_SESSION['signed_in'] == false) {
     //the user is not signed in
     echo 'Sorry, you have to be <a href="signin.php">signed in</a> to create a topic.';
 } else {
-
     //the user is signed in
     if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         //the form hasn't been posted yet, display it
@@ -36,7 +35,6 @@ if (!isset($_SESSION['signed_in']) || $_SESSION['signed_in'] == false) {
                     echo 'Before you can post a topic, you must wait for an admin to create some categories.';
                 }
             } else {
-
                 echo '<form method="post" action="">
                     Subject: <input type="text" name="topic_subject" />
                     Category:';
@@ -77,7 +75,7 @@ if (!isset($_SESSION['signed_in']) || $_SESSION['signed_in'] == false) {
 
             if (!$success) {
                 //something went wrong, display the error
-                echo 'An error occurred while inserting your data. Please try again later.' . mysql_error();
+                echo 'An error occurred while inserting your data. Please try again later.' . $stmt->errorInfo()[2];
                 Database::pdo()->rollBack();
             } else {
                 //the first query worked, now start the second, posts query
