@@ -81,10 +81,22 @@ else
                     echo '</td>';
                     echo '</tr>';
                 }
+
+                echo '</table>';
+
             }
         }
     }
 }
 
-include 'footer.php';
 ?>
+
+<form method="post" action="reply.php?id=<?=$_GET['id']?>">
+    <textarea name="reply_content"></textarea>
+    <input type="submit" value="Submit reply" />
+</form>
+
+<?php
+
+include 'footer.php';
+
