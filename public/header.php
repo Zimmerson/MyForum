@@ -6,7 +6,8 @@
     <meta name="description" content="Community hub for YATTA Clan" />
     <meta name="keywords" content="YATTA, World of tanks, Clan" />
     <title>YATTA Anime Clan</title>
-    <link rel="stylesheet" href="assets/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/reset.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/style.css" type="text/css"/>
 </head>
 <body>
 <h1>My forum</h1>
