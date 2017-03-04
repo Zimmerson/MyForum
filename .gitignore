@@ -3,6 +3,9 @@
 # PHPStorm IDE files.
 .idea/
 
+# Mac junk.
+.DS_Store
+
 # Don't commit sensative credentials.
 config/.env
 

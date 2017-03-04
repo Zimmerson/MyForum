@@ -1,50 +1,29 @@
 <?php
 
-//create_cat.php
-include 'connect.php';
-include 'header.php';
+include '../vendor/autoload.php';
 
-$sql = "SELECT
-            cat_id,
-            cat_name,
-            cat_description
-        FROM
-            categories";
+try {
 
-$stmt = Database::pdo()->prepare($sql);
-$success = $stmt->execute();
+    $dotEnv = new \Dotenv\Dotenv('../config/');
+    $dotEnv->load();
+    $dotEnv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS']);
 
-if(!$success)
-{
-    echo 'The categories could not be displayed, please try again later.';
-}
-else
-{
-    if($stmt->rowCount() == 0)
-    {
-        echo 'No categories defined yet.';
+    session_start();
+
+    $router = new App\Router($_SERVER['REQUEST_URI']);
+    $controller = $router->dispatch();
+
+    $data = $controller->getData();
+
+    $pageFile = $router->getPageFile();
+
+    if (file_exists($pageFile)) {
+        // Load the layout file which will include our page file.
+        require "../layouts/master.php";
     }
-    else
-    {
-        //prepare the table
-        echo '<table border="1">
-              <tr>
-                <th>Category</th>
-                <th>Last topic</th>
-              </tr>';
 
-        foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row)
-        {
-            echo '<tr>';
-            echo '<td class="leftpart">';
-            echo "<h3><a href=\"category.php?id={$row['cat_id']}\">" . $row['cat_name'] . '</a></h3>' . $row['cat_description'];
-            echo '</td>';
-            echo '<td class="rightpart">';
-            echo '<a href="topic.php?id=">Topic subject</a> at 10-10';
-            echo '</td>';
-            echo '</tr>';
-        }
-    }
+} catch (\Exception $e) {
+//    print "Application exception<br/>";
+//    print $e->getMessage();
+    throw $e;
 }
-
-include 'footer.php';
